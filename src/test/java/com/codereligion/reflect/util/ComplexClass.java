@@ -1,6 +1,5 @@
-package com.codereligion.reflect.util;
-/*
- * Copyright 2012 The Beast Authors (www.codereligion.com)
+/**
+ * Copyright 2012 www.codereligion.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,11 +13,9 @@ package com.codereligion.reflect.util;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
+package com.codereligion.reflect.util;
 
 import java.util.Arrays;
-
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;

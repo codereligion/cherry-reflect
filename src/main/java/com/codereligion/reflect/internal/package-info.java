@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2012 www.codereligion.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 /**
  * This package contains internal classes which are not part of the public API.
  * Usage of any of these classes is explicitly not recommended. Any class in
