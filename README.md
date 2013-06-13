@@ -25,6 +25,6 @@ Provides convenience methods to work with Java beans and reflection. It's main f
 ```mvn clean test```
 
 ### Continuous integration
-[![Build Status](https://api.travis-ci.org/codereligion/reflect.png?branch=master)](https://api.travis-ci.org/codereligion/reflect)
+[![Build Status](https://api.travis-ci.org/codereligion/reflect.png?branch=master)](https://travis-ci.org/codereligion/reflect)
 
 We use Travis CI to run our builds.
