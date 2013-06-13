@@ -73,7 +73,7 @@ public final class Reflector {
 	}
 
 	/**
-	 * Retrieves a {@link Set} of writeable properties for the given {@code beanClass}.
+	 * Retrieves a {@link Set} of writeable properties of the given {@code beanClass}.
 	 * This includes all properties which have a public setter.
 	 * 
 	 * @param beanClass the {@link Class} to get the writeable properties for
@@ -87,7 +87,7 @@ public final class Reflector {
 	}
 	
 	/**
-	 * Retrieves a {@link Set} of readable properties for the given {@code beanClass}.
+	 * Retrieves a {@link Set} of readable properties of the given {@code beanClass}.
 	 * This includes all properties which have a public getter.
 	 * 
 	 * @param beanClass the {@link Class} to get the readable properties for
@@ -101,10 +101,10 @@ public final class Reflector {
 	}
 	
 	/**
-	 * Retrieves a {@link Set} of readable properties for the given {@code beanClass}.
+	 * Retrieves a {@link Set} of writeable and readable properties of the given {@code beanClass}.
 	 * This includes all properties which have a public setter.
 	 * 
-	 * @param beanClass the {@link Class} to get the readable properties for
+	 * @param beanClass the {@link Class} to get the writeable and readable properties for
 	 * @return a {@link Set} of {@link PropertyDescriptor}s
 	 * @throws NullPointerException when the given parameter is {@code null}
 	 * @throws IllegalArgumentException when the given {@code beanClass} can not be introspected
