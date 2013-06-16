@@ -15,6 +15,7 @@
  */
 package com.codereligion.reflect.internal;
 
+
 import com.google.common.base.Predicate;
 import java.beans.PropertyDescriptor;
 import javax.annotation.Nullable;
