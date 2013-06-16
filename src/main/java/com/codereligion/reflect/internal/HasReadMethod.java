@@ -28,7 +28,7 @@ import javax.annotation.Nullable;
  */
 public class HasReadMethod implements Predicate<PropertyDescriptor> {
 	
-	public static Predicate<PropertyDescriptor> INSTANCE = new HasReadMethod();
+	public static final Predicate<PropertyDescriptor> INSTANCE = new HasReadMethod();
 
 	@Override
 	public boolean apply(@Nullable PropertyDescriptor input) {
