@@ -48,19 +48,46 @@ public class ReflectorTest {
 	@Test
 	public void hasDefaultConstructorMustThrowNpeWhenGivenNullBeanClass() {
 		
-		expectedException.expect(NullPointerException.class);
+		expectedException.expect(IllegalArgumentException.class);
 		expectedException.expectMessage("type must not be null.");
 		
 		Reflector.hasDefaultConstructor(null);
 	}
 	
 	@Test
-	public void getWriteablePropertiesMustThrowNpeWhenGivenNullType() {
+	public void getWriteableAndReadablePropertiesMustThrowIaeWhenGivenNullType() {
 		
-		expectedException.expect(NullPointerException.class);
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("type must not be null.");
+		
+		Reflector.getWriteableAndReadableProperties(null);
+	}
+	
+	@Test
+	public void getWriteablePropertiesMustThrowIaeWhenGivenNullType() {
+		
+		expectedException.expect(IllegalArgumentException.class);
 		expectedException.expectMessage("type must not be null.");
 
 		Reflector.getWriteableProperties(null);
+	}
+	
+	@Test
+	public void getReadablePropertiesMustThrowIaeWhenGivenNullType() {
+		
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("type must not be null.");
+		
+		Reflector.getReadableProperties(null);
+	}
+	
+	@Test
+	public void getReadablesPropertiesMustThrowIaeWhenGivenNullType() {
+		
+		expectedException.expect(IllegalArgumentException.class);
+		expectedException.expectMessage("type must not be null.");
+		
+		Reflector.getReadableProperties(null);
 	}
 	
 	@Test
