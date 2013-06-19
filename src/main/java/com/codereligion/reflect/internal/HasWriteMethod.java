@@ -17,8 +17,8 @@ package com.codereligion.reflect.internal;
 
 
 import com.google.common.base.Predicate;
+import com.sun.istack.internal.Nullable;
 import java.beans.PropertyDescriptor;
-import javax.annotation.Nullable;
 
 /**
  * Applies true to {@link PropertyDescriptor}s when they provide a write method.
@@ -32,6 +32,6 @@ public class HasWriteMethod implements Predicate<PropertyDescriptor> {
 
 	@Override
 	public boolean apply(@Nullable PropertyDescriptor input) {
-		return input.getWriteMethod() != null;
+		return input != null && input.getWriteMethod() != null;
 	}
 }
