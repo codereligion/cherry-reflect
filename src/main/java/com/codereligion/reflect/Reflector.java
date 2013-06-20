@@ -33,7 +33,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Reflection utility class.
+ * Provides a wrapper around the {@link Introspector} to fix known issues with generics
+ * in Java versions below 1.7.
  * 
  * @author Sebastian Gröbler
  * @since 11.08.2012

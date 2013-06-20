@@ -46,9 +46,10 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<compiler.plugin.version>3.1</compiler.plugin.version>
 		<animal.sniffer.plugin.version>1.9</animal.sniffer.plugin.version>
-		<release.plugin.version>2.4.1</release.plugin.version>
 		<surefire.plugin.version>2.15</surefire.plugin.version>
 		<license.plugin.version>1.9.0</license.plugin.version>
+		<javadoc.plugin.version>2.9</javadoc.plugin.version>
+		<release.plugin.version>2.4.1</release.plugin.version>
 
 		<!-- dependency versions -->
 		<guava.version>14.0.1</guava.version>
@@ -108,6 +109,7 @@
 				</executions>
 			</plugin>
 
+			<!-- testing -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -199,6 +201,16 @@
 				</executions>
 			</plugin>
 
+			<!-- java doc -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${javadoc.plugin.version}</version>
+				<configuration>
+					<excludePackageNames>com.codereligion.reflect.internal</excludePackageNames>
+				</configuration>
+			</plugin>
+
 			<!-- releasing -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -210,23 +222,23 @@
 	</build>
 
 	<dependencies>
-	
+
 		<!-- |||||||||||||||||||| -->
 		<!-- compile dependencies -->
 		<!-- |||||||||||||||||||| -->
-		
+
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.google.code.findbugs</groupId>
 			<artifactId>jsr305</artifactId>
 			<version>${jsr305.version}</version>
 		</dependency>
-		
+
 		<!-- ||||||||||||||||| -->
 		<!-- test dependencies -->
 		<!-- ||||||||||||||||| -->
