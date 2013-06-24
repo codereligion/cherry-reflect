@@ -1,3 +1,4 @@
+package com.codereligion.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -13,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect.util;
+
 
 import java.util.Arrays;
 import java.util.Calendar;

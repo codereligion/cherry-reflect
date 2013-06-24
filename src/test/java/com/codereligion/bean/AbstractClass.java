@@ -1,3 +1,4 @@
+package com.codereligion.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -13,14 +14,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect.util;
+
 
 /**
- * Test class for java introspector bug.
+ * Test abstract class.
  * 
  * @author Sebastian Gröbler
- * @since 13.08.2012
+ * @since 12.08.2012
  */
-public interface Identifiable<T> {
-	T getId();
+public abstract class AbstractClass {
+	
+	abstract void setFoo();
 }

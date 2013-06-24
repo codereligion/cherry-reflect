@@ -1,3 +1,4 @@
+package com.codereligion.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -13,17 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect.util;
+
 
 /**
- * Test interface using generics.
- *
+ * Test class for java introspector bug.
+ * 
  * @author Sebastian Gröbler
- * @since 20.08.2012
- * @param <T>
+ * @since 13.08.2012
  */
-public interface Api <T extends User> {
-
-	T getUser();
-	void setUser(T user);
+public interface Identifiable<T> {
+	T getId();
 }

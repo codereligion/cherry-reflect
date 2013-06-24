@@ -1,3 +1,4 @@
+package com.codereligion.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -13,15 +14,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect.util;
+
 
 /**
- * Test abstract class.
- * 
+ * Test interface using generics.
+ *
  * @author Sebastian Gröbler
- * @since 12.08.2012
+ * @since 20.08.2012
+ * @param <T>
  */
-public abstract class AbstractClass {
-	
-	abstract void setFoo();
+public interface Api <T extends User> {
+
+	T getUser();
+	void setUser(T user);
 }

@@ -128,17 +128,17 @@ public final class Reflector {
 			final BeanInfo beanInfo = Introspector.getBeanInfo(type);
 		    final PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
 		    
-		    final Set<PropertyDescriptor> settableProperties = new HashSet<PropertyDescriptor>();
+		    final Set<PropertyDescriptor> matchingProperties = new HashSet<PropertyDescriptor>();
 		        
 		    for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
 		    	
 		    	final PropertyDescriptor genericTypeAware = getGenericTypeAwarePropertyDescriptor(type, propertyDescriptor);
 		    	if (predicate.apply(genericTypeAware)) {
-		    		settableProperties.add(genericTypeAware);
+		    		matchingProperties.add(genericTypeAware);
 		    	}
 		    }
 		    
-		    return settableProperties;
+		    return matchingProperties;
 		} catch (final IntrospectionException e) {
 			throw new IllegalArgumentException("The given class " + type.getCanonicalName() + " can not be introspected. Reason: " + e.getMessage() + ".", e);
 		}

@@ -1,3 +1,4 @@
+package com.codereligion.reflect;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -13,21 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect;
 
+
+import static com.codereligion.matcher.IsNotInstantiatable.isNotInstantiatable;
+import static com.codereligion.matcher.PropertyDescriptorMatchers.containsProperty;
+import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.isOneOf;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import com.codereligion.reflect.util.ApiUser;
-import com.codereligion.reflect.util.ComplexClass;
-import com.codereligion.reflect.util.MissingDefaultConstructor;
-import com.codereligion.reflect.util.RestApi;
-import com.codereligion.reflect.util.TypeMissmatchBetweenReadAndWriteMethods;
-import com.codereligion.reflect.util.User;
+import com.codereligion.bean.ApiUser;
+import com.codereligion.bean.ComplexClass;
+import com.codereligion.bean.MissingDefaultConstructor;
+import com.codereligion.bean.MissingSetterAndMissingSetter;
+import com.codereligion.bean.RestApi;
+import com.codereligion.bean.TypeMissmatchBetweenReadAndWriteMethods;
+import com.codereligion.bean.User;
 import java.beans.PropertyDescriptor;
 import java.util.Set;
 import org.junit.Rule;
@@ -44,6 +50,42 @@ public class ReflectorTest {
 
 	@Rule
 	public ExpectedException expectedException = ExpectedException.none();
+	
+	@Test
+	public void mustNotBeInstantiatable() {
+		assertThat(Reflector.class, isNotInstantiatable());
+	}
+	
+	// TODO rename
+	@Test
+	public void getReadablePropertiesMustReturn() {
+		final Set<PropertyDescriptor> properties = Reflector.getReadableProperties(MissingSetterAndMissingSetter.class);
+		assertThat(properties, is(not(empty())));
+		assertThat(properties.size(), is(3));
+
+		assertThat(properties, containsProperty("class"));
+		assertThat(properties, containsProperty("readableProperty"));
+		assertThat(properties, containsProperty("writeableAndReadableProperty"));
+	}
+	
+	// TODO rename
+	@Test
+	public void getWriteablePropertiesMustReturn() {
+		final Set<PropertyDescriptor> properties = Reflector.getWriteableProperties(MissingSetterAndMissingSetter.class);
+		assertThat(properties, is(not(empty())));
+		assertThat(properties.size(), is(2));
+		assertThat(properties, containsProperty("writeableProperty"));
+		assertThat(properties, containsProperty("writeableAndReadableProperty"));
+	}
+	
+	// TODO rename
+	@Test
+	public void getWriteableAndReadablePropertiesMustReturn() {
+		final Set<PropertyDescriptor> properties = Reflector.getWriteableAndReadableProperties(MissingSetterAndMissingSetter.class);
+		assertThat(properties, is(not(empty())));
+		assertThat(properties.size(), is(1));
+		assertThat(properties, containsProperty("writeableAndReadableProperty"));
+	}
 	
 	@Test
 	public void hasDefaultConstructorMustThrowNpeWhenGivenNullBeanClass() {
