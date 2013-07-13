@@ -24,11 +24,12 @@ import javax.annotation.Nullable;
  * Applies true to {@link PropertyDescriptor}s when they provide a write method.
  * 
  * @author Sebastian Gröbler
+ * @author Willi Schönborn
  * @since 12.06.2013
  */
-public class HasWriteMethod implements Predicate<PropertyDescriptor> {
+public enum HasWriteMethod implements Predicate<PropertyDescriptor> {
 	
-	public static final Predicate<PropertyDescriptor> INSTANCE = new HasWriteMethod();
+	INSTANCE;
 
 	@Override
 	public boolean apply(@Nullable PropertyDescriptor input) {
