@@ -25,7 +25,7 @@ import org.hamcrest.Matcher;
 /**
  * TODO
  * 
- * @author sgroebler
+ * @author Sebastian Gröbler
  * @since 24.06.2013
  */
 public class PropertyDescriptorMatchers {

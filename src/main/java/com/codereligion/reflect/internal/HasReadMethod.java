@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
 /**
  * Applies true to {@link PropertyDescriptor}s when they provide a read method.
  * 
- * @author sgroebler
+ * @author Sebastian Gröbler
  * @since 12.06.2013
  */
 public class HasReadMethod implements Predicate<PropertyDescriptor> {

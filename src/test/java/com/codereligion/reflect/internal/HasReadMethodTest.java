@@ -22,7 +22,7 @@ import org.junit.Test;
 /**
  * Test the {@link HasReadMethod} predicate.
  * 
- * @author sgroebler
+ * @author Sebastian Gröbler
  * @since 23.06.2013
  */
 public class HasReadMethodTest {
