@@ -1,4 +1,4 @@
-# Reflect [![Build Status](https://api.travis-ci.org/codereligion/reflect.png?branch=master)](https://travis-ci.org/codereligion/reflect)
+# Reflect [![Build Status](http://jenkins.codereligion.com/buildStatus/icon?job=codereligion-reflect-master-build-flow)](http://jenkins.codereligion.com/view/codereligion-reflect/job/codereligion-reflect-master-build-flow/)
 
 This project provides convenience methods to do Java bean introspection. It's main functionality is to provide a wrapper around the ```java.beans.Introspector```, which can not handle generic classes to well in Java versions below 1.7.
 
