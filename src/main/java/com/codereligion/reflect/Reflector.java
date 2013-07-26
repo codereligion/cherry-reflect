@@ -175,7 +175,6 @@ public final class Reflector {
             return propertyDescriptor;
         }
     
-        // create a setter name from the given getter name
         final String propertyName = propertyDescriptor.getName();
         final Method readMethod = propertyDescriptor.getReadMethod();
         final String readMethodName = readMethod.getName();
