@@ -30,7 +30,7 @@ import static org.junit.Assert.assertTrue;
 import com.codereligion.bean.ApiUser;
 import com.codereligion.bean.ComplexClass;
 import com.codereligion.bean.MissingDefaultConstructor;
-import com.codereligion.bean.MissingSetterAndMissingSetter;
+import com.codereligion.bean.MissingSetterAndMissingGetter;
 import com.codereligion.bean.RestApi;
 import com.codereligion.bean.TypeMissmatchBetweenReadAndWriteMethods;
 import com.codereligion.bean.User;
@@ -56,10 +56,9 @@ public class ReflectorTest {
 		assertThat(Reflector.class, isNotInstantiatable());
 	}
 	
-	// TODO rename
 	@Test
-	public void getReadablePropertiesMustReturn() {
-		final Set<PropertyDescriptor> properties = Reflector.getReadableProperties(MissingSetterAndMissingSetter.class);
+	public void getReadablePropertiesMustReturnAllReadableProperties() {
+		final Set<PropertyDescriptor> properties = Reflector.getReadableProperties(MissingSetterAndMissingGetter.class);
 		assertThat(properties, is(not(empty())));
 		assertThat(properties.size(), is(3));
 
@@ -68,20 +67,18 @@ public class ReflectorTest {
 		assertThat(properties, containsProperty("writeableAndReadableProperty"));
 	}
 	
-	// TODO rename
 	@Test
-	public void getWriteablePropertiesMustReturn() {
-		final Set<PropertyDescriptor> properties = Reflector.getWriteableProperties(MissingSetterAndMissingSetter.class);
+	public void getWriteablePropertiesMustReturnAllWriteableProperties() {
+		final Set<PropertyDescriptor> properties = Reflector.getWriteableProperties(MissingSetterAndMissingGetter.class);
 		assertThat(properties, is(not(empty())));
 		assertThat(properties.size(), is(2));
 		assertThat(properties, containsProperty("writeableProperty"));
 		assertThat(properties, containsProperty("writeableAndReadableProperty"));
 	}
 	
-	// TODO rename
 	@Test
-	public void getWriteableAndReadablePropertiesMustReturn() {
-		final Set<PropertyDescriptor> properties = Reflector.getWriteableAndReadableProperties(MissingSetterAndMissingSetter.class);
+	public void getWriteableAndReadablePropertiesMustReturnAllWriteableAndReadableProperties() {
+		final Set<PropertyDescriptor> properties = Reflector.getWriteableAndReadableProperties(MissingSetterAndMissingGetter.class);
 		assertThat(properties, is(not(empty())));
 		assertThat(properties.size(), is(1));
 		assertThat(properties, containsProperty("writeableAndReadableProperty"));

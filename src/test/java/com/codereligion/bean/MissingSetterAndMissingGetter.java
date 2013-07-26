@@ -19,12 +19,12 @@
 package com.codereligion.bean;
 
 /**
- * Bean with a missing getter.
+ * Bean which provides three properties which are either readable, writeable or both.
  * 
  * @author Sebastian Gröbler
  * @since 23.06.2013
  */
-public class MissingSetterAndMissingSetter {
+public class MissingSetterAndMissingGetter {
 
 	private String writeableAndReadableProperty;
 	private boolean writeableProperty;
@@ -64,7 +64,7 @@ public class MissingSetterAndMissingSetter {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MissingSetterAndMissingSetter other = (MissingSetterAndMissingSetter) obj;
+		MissingSetterAndMissingGetter other = (MissingSetterAndMissingGetter) obj;
 		if (writeableProperty != other.writeableProperty)
 			return false;
 		if (readableProperty == null) {
@@ -82,7 +82,7 @@ public class MissingSetterAndMissingSetter {
 
 	@Override
 	public String toString() {
-		return "MissingSetterAndMissingSetter [writeableAndReadableProperty=" + writeableAndReadableProperty + ", writeableProperty=" + writeableProperty + ", readableProperty="
+		return "MissingSetterAndMissingGetter [writeableAndReadableProperty=" + writeableAndReadableProperty + ", writeableProperty=" + writeableProperty + ", readableProperty="
 				+ readableProperty + "]";
 	}
 

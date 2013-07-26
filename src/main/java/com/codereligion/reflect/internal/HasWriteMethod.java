@@ -15,7 +15,6 @@
  */
 package com.codereligion.reflect.internal;
 
-
 import com.google.common.base.Predicate;
 import java.beans.PropertyDescriptor;
 import javax.annotation.Nullable;
@@ -28,7 +27,7 @@ import javax.annotation.Nullable;
  * @since 12.06.2013
  */
 public enum HasWriteMethod implements Predicate<PropertyDescriptor> {
-	
+
 	INSTANCE;
 
 	@Override
