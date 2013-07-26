@@ -28,10 +28,10 @@ import javax.annotation.Nullable;
  */
 public enum HasWriteMethod implements Predicate<PropertyDescriptor> {
 
-	INSTANCE;
+    INSTANCE;
 
-	@Override
-	public boolean apply(@Nullable PropertyDescriptor input) {
-		return input != null && input.getWriteMethod() != null;
-	}
+    @Override
+    public boolean apply(@Nullable PropertyDescriptor input) {
+        return input != null && input.getWriteMethod() != null;
+    }
 }
