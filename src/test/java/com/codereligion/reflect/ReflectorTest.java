@@ -87,43 +87,43 @@ public class ReflectorTest {
     @Test
     public void hasDefaultConstructorMustThrowNpeWhenGivenNullBeanClass() {
 
-        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
         Reflector.hasDefaultConstructor(null);
     }
 
     @Test
-    public void getWriteableAndReadablePropertiesMustThrowIaeWhenGivenNullType() {
+    public void getWriteableAndReadablePropertiesMustThrowNpeWhenGivenNullType() {
 
-        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
         Reflector.getWriteableAndReadableProperties(null);
     }
 
     @Test
-    public void getWriteablePropertiesMustThrowIaeWhenGivenNullType() {
+    public void getWriteablePropertiesMustThrowNpeWhenGivenNullType() {
 
-        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
         Reflector.getWriteableProperties(null);
     }
 
     @Test
-    public void getReadablePropertiesMustThrowIaeWhenGivenNullType() {
+    public void getReadablePropertiesMustThrowNpeWhenGivenNullType() {
 
-        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
         Reflector.getReadableProperties(null);
     }
 
     @Test
-    public void getReadablesPropertiesMustThrowIaeWhenGivenNullType() {
+    public void getReadablesPropertiesMustThrowNpeWhenGivenNullType() {
 
-        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
         Reflector.getReadableProperties(null);

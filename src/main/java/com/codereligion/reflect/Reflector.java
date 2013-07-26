@@ -15,7 +15,7 @@
  */
 package com.codereligion.reflect;
 
-import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.codereligion.reflect.internal.Generics;
 import com.codereligion.reflect.internal.HasReadMethod;
@@ -39,6 +39,8 @@ import java.util.Set;
  */
 public final class Reflector {
 
+    private static final String TYPE_MUST_NOT_BE_NULL = "type must not be null.";
+
     /**
      * No public constructor for this utility class.
      */
@@ -52,11 +54,11 @@ public final class Reflector {
      * @param type the {@link Class} to check
      * @return true if the given {@code type} as a zero argument constructor,
      *         false otherwise
-     * @throws IllegalArgumentException when the given parameter is {@code null}
+     * @throws NullPointerException when the given parameter is {@code null}
      */
     public static boolean hasDefaultConstructor(final Class<?> type) {
 
-        checkArgument(type != null, "type must not be null.");
+        checkNotNull(type, TYPE_MUST_NOT_BE_NULL);
 
         final Constructor<?>[] constructors = type.getConstructors();
         for (final Constructor<?> constructor : constructors) {
@@ -75,11 +77,12 @@ public final class Reflector {
      * 
      * @param type the {@link Class} to get the writeable properties for
      * @return a {@link Set} of {@link PropertyDescriptor}s
-     * @throws IllegalArgumentException when the given {@code type} is
-     *             {@code null} or can not be introspected
+     * @throws NullPointerException when the given {@code type} is {@code null}
+     * @throws IllegalArgumentException when the given {@code type} can not be
+     *             introspected
      */
     public static Set<PropertyDescriptor> getWriteableProperties(final Class<?> type) {
-        checkArgument(type != null, "type must not be null.");
+        checkNotNull(type, TYPE_MUST_NOT_BE_NULL);
         return getProperties(type, HasWriteMethod.INSTANCE);
     }
 
@@ -89,11 +92,12 @@ public final class Reflector {
      * 
      * @param type the {@link Class} to get the readable properties for
      * @return a {@link Set} of {@link PropertyDescriptor}s
-     * @throws IllegalArgumentException when the given {@code type} is
-     *             {@code null} or can not be introspected
+     * @throws NullPointerException when the given {@code type} is {@code null}
+     * @throws IllegalArgumentException when the given {@code type} can not be
+     *             introspected
      */
     public static Set<PropertyDescriptor> getReadableProperties(final Class<?> type) {
-        checkArgument(type != null, "type must not be null.");
+        checkNotNull(type, TYPE_MUST_NOT_BE_NULL);
         return getProperties(type, HasReadMethod.INSTANCE);
     }
 
@@ -104,11 +108,12 @@ public final class Reflector {
      * @param type the {@link Class} to get the writeable and readable
      *            properties for
      * @return a {@link Set} of {@link PropertyDescriptor}s
-     * @throws IllegalArgumentException when the given {@code type} is
-     *             {@code null} or can not be introspected
+     * @throws NullPointerException when the given {@code type} is {@code null}
+     * @throws IllegalArgumentException when the given {@code type} can not be
+     *             introspected
      */
     public static Set<PropertyDescriptor> getWriteableAndReadableProperties(final Class<?> type) {
-        checkArgument(type != null, "type must not be null.");
+        checkNotNull(type, TYPE_MUST_NOT_BE_NULL);
         return getProperties(type, Predicates.and(HasReadMethod.INSTANCE, HasWriteMethod.INSTANCE));
     }
 
@@ -121,6 +126,7 @@ public final class Reflector {
      * @param predicate the predicate to which each {@link PropertyDescriptor}
      *            must apply
      * @return a {@link Set} of {@link PropertyDescriptor}s
+     * @throws NullPointerException when the given {@code type} is {@code null}
      * @throws IllegalArgumentException when the given {@code type} can not be
      *             introspected
      */
