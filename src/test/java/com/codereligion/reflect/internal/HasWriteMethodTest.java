@@ -27,8 +27,8 @@ import org.junit.Test;
  */
 public class HasWriteMethodTest {
 
-	@Test
-	public void mustNotApplyToNull() {
-		assertFalse(HasWriteMethod.INSTANCE.apply(null));
-	}
+    @Test
+    public void mustNotApplyToNull() {
+        assertFalse(HasWriteMethod.INSTANCE.apply(null));
+    }
 }

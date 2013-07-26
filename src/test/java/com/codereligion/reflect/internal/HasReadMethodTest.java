@@ -27,8 +27,8 @@ import org.junit.Test;
  */
 public class HasReadMethodTest {
 
-	@Test
-	public void mustNotApplyToNull() {
-		assertFalse(HasReadMethod.INSTANCE.apply(null));
-	}
+    @Test
+    public void mustNotApplyToNull() {
+        assertFalse(HasReadMethod.INSTANCE.apply(null));
+    }
 }
