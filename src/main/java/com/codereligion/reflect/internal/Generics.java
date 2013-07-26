@@ -64,29 +64,13 @@ public class Generics {
             return propertyDescriptor;
         }
     
-        // almost done, but the damn read method could still be broken
         try {
-    
-            if (!readMethod.isBridge()) {
-                // so now we have the write method and the read method is also
-                // not bridged
-                return new PropertyDescriptor(propertyName, readMethod, potentialWriteMethod);
-            }
-    
-            // yuck, even the bloody read method was wrong, try to get the right
-            // one
+            // now we know, that we have a read method that is bridged and that we can find the real one
             final Method potentialReadMethod = getPublicNonBridgedMethod(readMethodName, type);
-    
-            if (potentialReadMethod != null) {
-                // now we have the write method and the read method, hurrah!!!
-                return new PropertyDescriptor(propertyName, potentialReadMethod, potentialWriteMethod);
-            }
+            return new PropertyDescriptor(propertyName, potentialReadMethod, potentialWriteMethod);
         } catch (final IntrospectionException e) {
             throw new IllegalArgumentException("Could not instrospect property: '" + propertyName + "'. Reason: " + e.getMessage() + ".", e);
         }
-    
-        throw new IllegalStateException("PropertyDescriptor for property '" + propertyDescriptor.getName() + "' references "
-                + "a bridged readMethod which does not seem to have a public method to bridge to.");
     }
     
     /**
