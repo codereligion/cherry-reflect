@@ -26,6 +26,10 @@ public class Generics {
     private static final String SETTER_PREFIX = "set";
     private static final String GETTER_PREFIX = "get";
     private static final String BOOLEAN_GETTER_PREFIX = "is";
+    
+    private Generics() {
+        // no public instantiation
+    }
 
     /**
      * This method provides a workaround for the java bug documented here:
@@ -42,7 +46,7 @@ public class Generics {
      */
     public static PropertyDescriptor getGenericTypeAwarePropertyDescriptor(final Class<?> type, final PropertyDescriptor propertyDescriptor) {
     
-        if (!hasBug(propertyDescriptor)) {
+        if (!hasBugCharacteristics(propertyDescriptor)) {
             return propertyDescriptor;
         }
     
@@ -93,7 +97,7 @@ public class Generics {
      * @param propertyDescriptor the {@link PropertyDescriptor} to check
      * @return true if the bug may have occurred on this property descriptor
      */
-    private static boolean hasBug(final PropertyDescriptor propertyDescriptor) {
+    private static boolean hasBugCharacteristics(final PropertyDescriptor propertyDescriptor) {
         final Method writeMethod = propertyDescriptor.getWriteMethod();
         final Method readMethod = propertyDescriptor.getReadMethod();
         return readMethod != null && (writeMethod == null || writeMethod.isBridge());
