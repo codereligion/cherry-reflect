@@ -50,7 +50,7 @@ public class ReflectorTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-
+    
     @Test
     public void mustNotBeInstantiatable() {
         assertThat(Reflector.class, isNotInstantiatable());

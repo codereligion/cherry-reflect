@@ -34,7 +34,7 @@ public class User implements Identifiable<Integer> {
 	public void setId(final Integer id) {
 		this.id = id;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

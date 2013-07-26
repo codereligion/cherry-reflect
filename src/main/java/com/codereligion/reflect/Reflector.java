@@ -27,7 +27,6 @@ import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -241,9 +240,8 @@ public final class Reflector {
         for (final Method method : type.getMethods()) {
             final boolean isMatchingName = method.getName().equals(methodName);
             final boolean isNotBridge = !method.isBridge();
-            final boolean isPublic = Modifier.isPublic(method.getModifiers());
 
-            if (isMatchingName && isNotBridge && isPublic) {
+            if (isNotBridge && isMatchingName) {
                 return method;
             }
         }
