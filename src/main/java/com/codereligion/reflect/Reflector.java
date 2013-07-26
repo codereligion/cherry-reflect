@@ -17,7 +17,6 @@ package com.codereligion.reflect;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.codereligion.reflect.internal.Generics;
 import com.codereligion.reflect.internal.HasReadMethod;
 import com.codereligion.reflect.internal.HasWriteMethod;
 import com.google.common.base.Predicate;
@@ -27,6 +26,8 @@ import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,8 +39,11 @@ import java.util.Set;
  * @since 11.08.2012
  */
 public final class Reflector {
-
+    
     private static final String TYPE_MUST_NOT_BE_NULL = "type must not be null.";
+    private static final String SETTER_PREFIX = "set";
+    private static final String GETTER_PREFIX = "get";
+    private static final String BOOLEAN_GETTER_PREFIX = "is";
 
     /**
      * No public constructor for this utility class.
@@ -140,7 +144,7 @@ public final class Reflector {
 
             for (final PropertyDescriptor propertyDescriptor : propertyDescriptors) {
 
-                final PropertyDescriptor genericTypeAware = Generics.getGenericTypeAwarePropertyDescriptor(type, propertyDescriptor);
+                final PropertyDescriptor genericTypeAware = getGenericTypeAwarePropertyDescriptor(type, propertyDescriptor);
                 if (predicate.apply(genericTypeAware)) {
                     matchingProperties.add(genericTypeAware);
                 }
@@ -150,5 +154,100 @@ public final class Reflector {
         } catch (final IntrospectionException e) {
             throw new IllegalArgumentException("The given class " + type.getCanonicalName() + " can not be introspected. Reason: " + e.getMessage() + ".", e);
         }
+    }
+    
+
+    /**
+     * This method provides a workaround for the java bug documented here:
+     * http://bugs.sun.com/view_bug.do?bug_id=6528714
+     * 
+     * @param type the {@link Class} to which the given
+     *            {@code propertyDescriptor} belongs
+     * @param propertyDescriptor the {@link PropertyDescriptor} to potentially
+     *            workaround
+     * @return either the given {@code propertyDescriptor} or a new one which
+     *         reflects the underlying property correctly
+     * @throws IllegalArgumentException when instantiation of a new
+     *             {@link PropertyDescriptor} failed
+     */
+    private static PropertyDescriptor getGenericTypeAwarePropertyDescriptor(final Class<?> type, final PropertyDescriptor propertyDescriptor) {
+    
+        if (!hasBugCharacteristics(propertyDescriptor)) {
+            return propertyDescriptor;
+        }
+    
+        // create a setter name from the given getter name
+        final String propertyName = propertyDescriptor.getName();
+        final Method readMethod = propertyDescriptor.getReadMethod();
+        final String readMethodName = readMethod.getName();
+        final String writeMethodName = determineWriteMethodNameForReadMethod(readMethod);
+    
+        // try to find public, non bridged write method matching the name
+        final Method potentialWriteMethod = getPublicNonBridgedMethod(writeMethodName, type);
+    
+        if (potentialWriteMethod == null) {
+            // did not find a write method so there is actually none
+            return propertyDescriptor;
+        }
+    
+        try {
+            // now we know, that we have a read method that is bridged and that we can find the real one
+            final Method potentialReadMethod = getPublicNonBridgedMethod(readMethodName, type);
+            return new PropertyDescriptor(propertyName, potentialReadMethod, potentialWriteMethod);
+        } catch (final IntrospectionException e) {
+            throw new IllegalArgumentException("Could not instrospect property: '" + propertyName + "'. Reason: " + e.getMessage() + ".", e);
+        }
+    }
+    
+    /**
+     * Determines whether the given {@code propertyDescriptor} may have the
+     * characteristics, which indicate that the bug occurred and further
+     * analysis may be necessary.
+     * 
+     * @param propertyDescriptor the {@link PropertyDescriptor} to check
+     * @return true if the bug may have occurred on this property descriptor
+     */
+    private static boolean hasBugCharacteristics(final PropertyDescriptor propertyDescriptor) {
+        final Method writeMethod = propertyDescriptor.getWriteMethod();
+        final Method readMethod = propertyDescriptor.getReadMethod();
+        return readMethod != null && (writeMethod == null || writeMethod.isBridge());
+    }
+
+    /**
+     * Determines write method name for the given {@code readMethod}.
+     * 
+     * @param readMethod the {@link Method} to get the write method name for
+     * @return the name of the write method
+     */
+    private static String determineWriteMethodNameForReadMethod(final Method readMethod) {
+        final String readMethodName = readMethod.getName();
+        if (readMethodName.contains(BOOLEAN_GETTER_PREFIX)) {
+            return readMethodName.replace(BOOLEAN_GETTER_PREFIX, SETTER_PREFIX);
+        }
+        return readMethodName.replace(GETTER_PREFIX, SETTER_PREFIX);
+    }
+
+
+    /**
+     * Tries to find a public non-bridged method in the given {@code type} which
+     * matches the given {@code methodName}.
+     * 
+     * @param methodName the name of the {@link Method} to find
+     * @param type the {@link Class} in which the {@link Method} is expected
+     * @return the matching {@link Method} or {@code null} if it could not be
+     *         found
+     */
+    private static Method getPublicNonBridgedMethod(final String methodName, final Class<?> type) {
+        for (final Method method : type.getMethods()) {
+            final boolean isMatchingName = method.getName().equals(methodName);
+            final boolean isNotBridge = !method.isBridge();
+            final boolean isPublic = Modifier.isPublic(method.getModifiers());
+
+            if (isMatchingName && isNotBridge && isPublic) {
+                return method;
+            }
+        }
+
+        return null;
     }
 }
