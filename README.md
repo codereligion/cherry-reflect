@@ -1,6 +1,6 @@
 # Reflect [![Build Status](https://www.proxyssl.org/search.php?get=vyGkysiFNqvU88nKVjvFABu3KCyPCVfJlPg9QuZJnt6AbqSX0xji8JvLrluxlCfBaG8PTJhhWv%2Fu2%2B5LddHsFXXNOGJ1jCckqu8K1CffQ5tBN4xieLYGPoft2DatSx323zfViUSaxm0972G0Luj9bFAbNr%2Fy4gZDmdOdxoubjQU%3D&sa=af8dc2688d6f&opt=0&fl=nr)](http://jenkins.codereligion.com/view/codereligion-reflect/job/codereligion-reflect-master-build-flow/)
 
-This project provides convenience methods to do Java bean introspection. It's main functionality is to provide a wrapper around the ```java.beans.Introspector```, which can not handle generic classes to well in Java versions below 1.7.
+This project provides convenience methods to do Java bean introspection. It's main functionality is to provide a very thin wrapper around the ```java.beans.Introspector```, which can not handle generic classes to well in Java versions below 1.7.
 
 For more details have a look at the [wiki](https://github.com/codereligion/reflect/wiki).
 
