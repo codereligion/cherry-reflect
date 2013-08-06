@@ -122,21 +122,11 @@
 				<configuration>
 					<header>LICENSE_HEADER.txt</header>
 					<strictCheck>true</strictCheck>
-					<excludes>
-						<exclude>LICENSE.txt</exclude>
-						<exclude>README.md</exclude>
-						<exclude>.gitignore</exclude>
-						<excludes>.travis.yml</excludes>
-					</excludes>
+					<includes>
+						<include>src/</include>
+					</includes>
 				</configuration>
 				<executions>
-					<execution>
-						<id>format</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>format</goal>
-						</goals>
-					</execution>
 					<execution>
 						<id>check</id>
 						<phase>verify</phase>
@@ -229,5 +219,28 @@
 		</dependency>
 
 	</dependencies>
+
+	<profiles>
+		<profile>
+			<id>generate.license.headers</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.mycila.maven-license-plugin</groupId>
+						<artifactId>maven-license-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>format</id>
+								<phase>generate-sources</phase>
+								<goals>
+									<goal>format</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
