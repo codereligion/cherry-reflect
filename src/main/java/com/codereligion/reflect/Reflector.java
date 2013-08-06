@@ -32,7 +32,7 @@ import java.util.Set;
 
 /**
  * Provides a wrapper around the {@link Introspector} to fix known issues with
- * generics in Java versions below 1.7.
+ * generics in Java version 1.6.
  * 
  * @author Sebastian Gröbler
  * @since 11.08.2012
