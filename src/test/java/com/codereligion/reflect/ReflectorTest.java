@@ -53,7 +53,7 @@ public class ReflectorTest {
     
     @Test
     public void mustNotBeInstantiatable() {
-        assertThat(Reflector.class, isNotInstantiatable());
+        assertThat(Reflector.class, not(isNotInstantiatable()));
     }
 
     @Test
