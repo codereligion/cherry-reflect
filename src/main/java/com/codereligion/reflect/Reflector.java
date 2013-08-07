@@ -45,13 +45,6 @@ public class Reflector {
     private static final String BOOLEAN_GETTER_PREFIX = "is";
 
     /**
-     * No public constructor for this utility class.
-     */
-    private Reflector() {
-        throw new IllegalAccessError("This is an utility class which must not be instantiated.");
-    }
-
-    /**
      * Determines whether the given {@code type} has a default constructor.
      * 
      * @param type the {@link Class} to check
