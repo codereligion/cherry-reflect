@@ -128,8 +128,8 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>check</id>
-						<phase>verify</phase>
+						<id>check-license</id>
+						<phase>test</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>
@@ -230,7 +230,7 @@
 						<artifactId>maven-license-plugin</artifactId>
 						<executions>
 							<execution>
-								<id>format</id>
+								<id>format-license</id>
 								<phase>generate-sources</phase>
 								<goals>
 									<goal>format</goal>
