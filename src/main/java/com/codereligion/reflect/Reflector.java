@@ -37,12 +37,19 @@ import java.util.Set;
  * @author Sebastian Gröbler
  * @since 11.08.2012
  */
-public class Reflector {
+public final class Reflector {
     
     private static final String TYPE_MUST_NOT_BE_NULL = "type must not be null.";
     private static final String SETTER_PREFIX = "set";
     private static final String GETTER_PREFIX = "get";
     private static final String BOOLEAN_GETTER_PREFIX = "is";
+
+    /**
+     * No public constructor for this utility class.
+     */
+    private Reflector() {
+        throw new IllegalAccessError("This is an utility class which must not be instantiated.");
+    }
 
     /**
      * Determines whether the given {@code type} has a default constructor.
