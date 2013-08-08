@@ -53,7 +53,7 @@ public class BeanIntrospectionsTest {
     
     @Test
     public void mustNotBeInstantiatable() {
-        assertThat(BeanIntrospections.class, isNotInstantiatable());
+        assertThat(BeanIntrospections.class, not(isNotInstantiatable()));
     }
 
     @Test
