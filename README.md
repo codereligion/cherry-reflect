@@ -20,11 +20,14 @@ For more details have a look at the [wiki](https://github.com/codereligion/refle
 ## Example code
 ```java
 // check if a class has a default constructor
-boolean hasDefaultConstructor = Reflector.hasDefaultConstructor(SomeDomainObject.class);
+boolean hasDefaultConstructor = BeanIntrospections.hasDefaultConstructor(SomeDomainObject.class);
     
 // get property descriptors, even for classes with generic members
-Set<PropertyDescriptor> writeables = Reflector.getWriteableProperties(SomeDomainObject.class);
-Set<PropertyDescriptor> readables = Reflector.getReadableProperties(SomeDomainObject.class);
-Set<PropertyDescriptor> writeableAndReables = Reflector.getWriteableAndReadableProperties(SomeDomainObject.class);
+Set<PropertyDescriptor> writeables = BeanIntrospections.getWriteableProperties(SomeDomainObject.class);
+Set<PropertyDescriptor> readables = BeanIntrospections.getReadableProperties(SomeDomainObject.class);
+Set<PropertyDescriptor> writeableAndReables = BeanIntrospections.getWriteableAndReadableProperties(SomeDomainObject.class);
+
+// decorate a BeanInfo so that it can handle generics
+BeanInfo beanInfo = GenericTypeAwareBeanInfo.of(Introspector.getBeanInfo(type));
 ...
 ```
