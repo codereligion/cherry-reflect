@@ -179,15 +179,4 @@ public final class GenericTypeAwareBeanInfo extends ForwardingBeanInfo {
 
         return null;
     }
-    
-    @Override
-    public int hashCode() {
-        return beanInfo.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return beanInfo.equals(obj);
-    }
-
 }
