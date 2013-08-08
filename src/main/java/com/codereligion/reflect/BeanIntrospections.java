@@ -30,19 +30,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Provides convenience method for working with reflection.
+ * Provides convenience methods to ease working with Java bean instrospection.
  * 
  * @author Sebastian Gröbler
  * @since 11.08.2012
  */
-public final class Reflector {
+public final class BeanIntrospections {
     
     private static final String TYPE_MUST_NOT_BE_NULL = "type must not be null.";
 
     /**
      * No public constructor for this utility class.
      */
-    private Reflector() {
+    private BeanIntrospections() {
         throw new IllegalAccessError("This is an utility class which must not be instantiated.");
     }
 

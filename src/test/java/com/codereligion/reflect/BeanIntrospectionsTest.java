@@ -41,24 +41,24 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 /**
- * Tests {@link Reflector}.
+ * Tests {@link BeanIntrospections}.
  * 
  * @author Sebastian Gröbler
  * @since 12.08.2012
  */
-public class ReflectorTest {
+public class BeanIntrospectionsTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
     
     @Test
     public void mustNotBeInstantiatable() {
-        assertThat(Reflector.class, isNotInstantiatable());
+        assertThat(BeanIntrospections.class, isNotInstantiatable());
     }
 
     @Test
     public void getReadablePropertiesMustReturnAllReadableProperties() {
-        final Set<PropertyDescriptor> properties = Reflector.getReadableProperties(MissingSetterAndMissingGetter.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getReadableProperties(MissingSetterAndMissingGetter.class);
         assertThat(properties, is(not(empty())));
         assertThat(properties.size(), is(3));
 
@@ -69,7 +69,7 @@ public class ReflectorTest {
 
     @Test
     public void getWriteablePropertiesMustReturnAllWriteableProperties() {
-        final Set<PropertyDescriptor> properties = Reflector.getWriteableProperties(MissingSetterAndMissingGetter.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getWriteableProperties(MissingSetterAndMissingGetter.class);
         assertThat(properties, is(not(empty())));
         assertThat(properties.size(), is(2));
         assertThat(properties, containsProperty("writeableProperty"));
@@ -78,7 +78,7 @@ public class ReflectorTest {
 
     @Test
     public void getWriteableAndReadablePropertiesMustReturnAllWriteableAndReadableProperties() {
-        final Set<PropertyDescriptor> properties = Reflector.getWriteableAndReadableProperties(MissingSetterAndMissingGetter.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getWriteableAndReadableProperties(MissingSetterAndMissingGetter.class);
         assertThat(properties, is(not(empty())));
         assertThat(properties.size(), is(1));
         assertThat(properties, containsProperty("writeableAndReadableProperty"));
@@ -90,7 +90,7 @@ public class ReflectorTest {
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
-        Reflector.hasDefaultConstructor(null);
+        BeanIntrospections.hasDefaultConstructor(null);
     }
 
     @Test
@@ -99,7 +99,7 @@ public class ReflectorTest {
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
-        Reflector.getWriteableAndReadableProperties(null);
+        BeanIntrospections.getWriteableAndReadableProperties(null);
     }
 
     @Test
@@ -108,7 +108,7 @@ public class ReflectorTest {
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
-        Reflector.getWriteableProperties(null);
+        BeanIntrospections.getWriteableProperties(null);
     }
 
     @Test
@@ -117,7 +117,7 @@ public class ReflectorTest {
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
-        Reflector.getReadableProperties(null);
+        BeanIntrospections.getReadableProperties(null);
     }
 
     @Test
@@ -126,12 +126,12 @@ public class ReflectorTest {
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("type must not be null.");
 
-        Reflector.getReadableProperties(null);
+        BeanIntrospections.getReadableProperties(null);
     }
 
     @Test
     public void getWriteableAndReadablePropertiesMustReturnOnlyWriteableAndReadbaleProperties() {
-        final Set<PropertyDescriptor> properties = Reflector.getWriteableAndReadableProperties(ComplexClass.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getWriteableAndReadableProperties(ComplexClass.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -144,7 +144,7 @@ public class ReflectorTest {
 
     @Test
     public void getWriteablePropertiesMustReturnPropertiesWhichAreWritebale() {
-        final Set<PropertyDescriptor> properties = Reflector.getWriteableProperties(ComplexClass.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getWriteableProperties(ComplexClass.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -156,7 +156,7 @@ public class ReflectorTest {
 
     @Test
     public void getReadablePropertiesMustReturnPropertiesWhichAreReadable() {
-        final Set<PropertyDescriptor> properties = Reflector.getReadableProperties(ComplexClass.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getReadableProperties(ComplexClass.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -168,7 +168,7 @@ public class ReflectorTest {
 
     @Test
     public void getWriteableAndReadablePropertiesMustNotCauseIntrospectionBugWhenGivenUnboundGenericClass() {
-        final Set<PropertyDescriptor> properties = Reflector.getWriteableAndReadableProperties(User.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getWriteableAndReadableProperties(User.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -182,7 +182,7 @@ public class ReflectorTest {
 
     @Test
     public void getWriteablePropertiesMustNotCauseIntrospectionBugWhenGivenUnboundGenericClass() {
-        final Set<PropertyDescriptor> properties = Reflector.getWriteableProperties(User.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getWriteableProperties(User.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -195,7 +195,7 @@ public class ReflectorTest {
 
     @Test
     public void getReadablePropertiesMustNotCauseIntrospectionBugWhenGivenUnboundGenericClass() {
-        final Set<PropertyDescriptor> properties = Reflector.getReadableProperties(User.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getReadableProperties(User.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -209,7 +209,7 @@ public class ReflectorTest {
 
     @Test
     public void getWriteableAndReadablePropertiesMustNotCauseIntrospectionBugWhenGivenBoundGenericClass() {
-        final Set<PropertyDescriptor> properties = Reflector.getWriteableAndReadableProperties(RestApi.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getWriteableAndReadableProperties(RestApi.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -222,7 +222,7 @@ public class ReflectorTest {
 
     @Test
     public void getWriteablePropertiesMustNotCauseIntrospectionBugWhenGivenBoundGenericClass() {
-        final Set<PropertyDescriptor> properties = Reflector.getWriteableProperties(RestApi.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getWriteableProperties(RestApi.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -235,7 +235,7 @@ public class ReflectorTest {
 
     @Test
     public void getReadablePropertiesMustNotCauseIntrospectionBugWhenGivenBoundGenericClass() {
-        final Set<PropertyDescriptor> properties = Reflector.getReadableProperties(RestApi.class);
+        final Set<PropertyDescriptor> properties = BeanIntrospections.getReadableProperties(RestApi.class);
 
         assertNotNull(properties);
         assertFalse(properties.isEmpty());
@@ -253,7 +253,7 @@ public class ReflectorTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Could not instrospect property: 'created'. Reason: type mismatch between read and write methods.");
 
-        Reflector.getWriteableAndReadableProperties(TypeMissmatchBetweenReadAndWriteMethods.class);
+        BeanIntrospections.getWriteableAndReadableProperties(TypeMissmatchBetweenReadAndWriteMethods.class);
     }
 
     @Test
@@ -262,7 +262,7 @@ public class ReflectorTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Could not instrospect property: 'created'. Reason: type mismatch between read and write methods.");
 
-        Reflector.getWriteableProperties(TypeMissmatchBetweenReadAndWriteMethods.class);
+        BeanIntrospections.getWriteableProperties(TypeMissmatchBetweenReadAndWriteMethods.class);
     }
 
     @Test
@@ -271,16 +271,16 @@ public class ReflectorTest {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("Could not instrospect property: 'created'. Reason: type mismatch between read and write methods.");
 
-        Reflector.getReadableProperties(TypeMissmatchBetweenReadAndWriteMethods.class);
+        BeanIntrospections.getReadableProperties(TypeMissmatchBetweenReadAndWriteMethods.class);
     }
 
     @Test
     public void givenClassWithoutDefaultConstructorShouldReturnFalseWhenCallingHasDefaultConstructor() {
-        assertFalse(Reflector.hasDefaultConstructor(MissingDefaultConstructor.class));
+        assertFalse(BeanIntrospections.hasDefaultConstructor(MissingDefaultConstructor.class));
     }
 
     @Test
     public void givenClassWithDefaultConstructorShouldReturnWhenCallingHasDefaultConstructor() {
-        assertTrue(Reflector.hasDefaultConstructor(ComplexClass.class));
+        assertTrue(BeanIntrospections.hasDefaultConstructor(ComplexClass.class));
     }
 }
