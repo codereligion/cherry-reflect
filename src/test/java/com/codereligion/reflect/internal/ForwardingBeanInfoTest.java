@@ -16,10 +16,12 @@
 
 package com.codereligion.reflect.internal;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import com.codereligion.reflect.internal.ForwardingBeanInfo;
 import java.beans.BeanInfo;
 import org.junit.Before;
 import org.junit.Test;
@@ -95,5 +97,14 @@ public class ForwardingBeanInfoTest {
     public void mustDelegateCallsToGetPropertyDescriptors() {
         forwardingBeanInfo.getPropertyDescriptors();
         verify(beanInfo).getPropertyDescriptors();
+    }
+    
+    @Test
+    public void mustDelegateCallsToToString() {
+        final String expected = "foo";
+        
+        when(beanInfo.toString()).thenReturn(expected);
+        
+        assertThat(forwardingBeanInfo.toString(), is(expected));
     }
 }
