@@ -1,4 +1,4 @@
-package com.codereligion.bean;
+package com.codereligion.example.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -17,28 +17,31 @@ package com.codereligion.bean;
 
 
 /**
- * Test class for java introspector bug.
- * 
+ * Test class using generics.
+ *
  * @author Sebastian Gröbler
- * @since 12.08.2012
+ * @since 20.08.2012
  */
-public class ApiUser extends User {
+public class RestApi implements Api<ApiUser> {
+	
+	private ApiUser user;
 
-	private Integer apiId;
-
-	public Integer getApiId() {
-		return this.apiId;
+	@Override
+	public ApiUser getUser() {
+		return this.user;
 	}
 
-	public void setApiId(final Integer apiId) {
-		this.apiId = apiId;
+	@Override
+	public void setUser(final ApiUser user) {
+		this.user = user;
+		
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((this.apiId == null) ? 0 : this.apiId.hashCode());
+		int result = 1;
+		result = prime * result + ((this.user == null) ? 0 : this.user.hashCode());
 		return result;
 	}
 
@@ -46,15 +49,15 @@ public class ApiUser extends User {
 	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
-		if (!super.equals(obj))
+		if (obj == null)
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final ApiUser other = (ApiUser) obj;
-		if (this.apiId == null) {
-			if (other.apiId != null)
+		final RestApi other = (RestApi) obj;
+		if (this.user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!this.apiId.equals(other.apiId))
+		} else if (!this.user.equals(other.user))
 			return false;
 		return true;
 	}
@@ -62,8 +65,8 @@ public class ApiUser extends User {
 	@Override
 	public String toString() {
 		final StringBuilder builder = new StringBuilder();
-		builder.append("ApiUser [apiId=");
-		builder.append(this.apiId);
+		builder.append("RestApi [user=");
+		builder.append(this.user);
 		builder.append("]");
 		return builder.toString();
 	}

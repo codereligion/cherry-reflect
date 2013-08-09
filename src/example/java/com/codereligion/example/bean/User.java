@@ -1,4 +1,4 @@
-package com.codereligion.bean;
+package com.codereligion.example.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -17,38 +17,29 @@ package com.codereligion.bean;
 
 
 /**
- * Test class without a default constructor.
- *
+ * Test class for java introspector bug.
+ * 
  * @author Sebastian Gröbler
- * @since 16.08.2012
+ * @since 12.08.2012
  */
-public class MissingDefaultConstructor {
+public class User implements Identifiable<Integer> {
 
-	private final int foo;
-	private boolean bar;
-	
-	public MissingDefaultConstructor(final int foo) {
-		this.foo = foo;
+	private Integer id;
+
+	@Override
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(final Integer id) {
+		this.id = id;
 	}
 	
-	public int getFoo() {
-		return this.foo;
-	}
-
-	public boolean isBar() {
-		return this.bar;
-	}
-
-	public void setBar(final boolean bar) {
-		this.bar = bar;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (this.bar ? 1231 : 1237);
-		result = prime * result + this.foo;
+		result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
 		return result;
 	}
 
@@ -60,10 +51,11 @@ public class MissingDefaultConstructor {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final MissingDefaultConstructor other = (MissingDefaultConstructor) obj;
-		if (this.bar != other.bar)
-			return false;
-		if (this.foo != other.foo)
+		final User other = (User) obj;
+		if (this.id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!this.id.equals(other.id))
 			return false;
 		return true;
 	}
@@ -71,12 +63,10 @@ public class MissingDefaultConstructor {
 	@Override
 	public String toString() {
 		final StringBuilder builder = new StringBuilder();
-		builder.append("NoDefaultConstructor [foo=");
-		builder.append(this.foo);
-		builder.append(", bar=");
-		builder.append(this.bar);
+		builder.append("User [id=");
+		builder.append(this.id);
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 }

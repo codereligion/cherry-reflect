@@ -1,4 +1,4 @@
-package com.codereligion.bean;
+package com.codereligion.example.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
