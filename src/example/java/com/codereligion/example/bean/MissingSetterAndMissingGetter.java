@@ -16,7 +16,7 @@
 /**
  * 
  */
-package com.codereligion.bean;
+package com.codereligion.example.bean;
 
 /**
  * Bean which provides three properties which are either readable, writeable or both.

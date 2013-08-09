@@ -1,4 +1,4 @@
-package com.codereligion.bean;
+package com.codereligion.example.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -22,24 +22,23 @@ package com.codereligion.bean;
  * @author Sebastian Gröbler
  * @since 12.08.2012
  */
-public class User implements Identifiable<Integer> {
+public class ApiUser extends User {
 
-	private Integer id;
+	private Integer apiId;
 
-	@Override
-	public Integer getId() {
-		return this.id;
+	public Integer getApiId() {
+		return this.apiId;
 	}
 
-	public void setId(final Integer id) {
-		this.id = id;
+	public void setApiId(final Integer apiId) {
+		this.apiId = apiId;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
+		int result = super.hashCode();
+		result = prime * result + ((this.apiId == null) ? 0 : this.apiId.hashCode());
 		return result;
 	}
 
@@ -47,15 +46,15 @@ public class User implements Identifiable<Integer> {
 	public boolean equals(final Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final User other = (User) obj;
-		if (this.id == null) {
-			if (other.id != null)
+		final ApiUser other = (ApiUser) obj;
+		if (this.apiId == null) {
+			if (other.apiId != null)
 				return false;
-		} else if (!this.id.equals(other.id))
+		} else if (!this.apiId.equals(other.apiId))
 			return false;
 		return true;
 	}
@@ -63,10 +62,9 @@ public class User implements Identifiable<Integer> {
 	@Override
 	public String toString() {
 		final StringBuilder builder = new StringBuilder();
-		builder.append("User [id=");
-		builder.append(this.id);
+		builder.append("ApiUser [apiId=");
+		builder.append(this.apiId);
 		builder.append("]");
 		return builder.toString();
 	}
-
 }
