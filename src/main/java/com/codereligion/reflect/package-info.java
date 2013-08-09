@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 /**
- * This package contains classes to do Java beans introspection.
+ * This package contains classes to do Java bean introspection.
  */
 @javax.annotation.ParametersAreNonnullByDefault
 package com.codereligion.reflect;
