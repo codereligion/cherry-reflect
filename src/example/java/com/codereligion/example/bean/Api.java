@@ -1,4 +1,4 @@
-package com.codereligion.bean;
+package com.codereligion.example.bean;
 /**
  * Copyright 2013 www.codereligion.com
  *
@@ -17,11 +17,14 @@ package com.codereligion.bean;
 
 
 /**
- * Test class for java introspector bug.
- * 
+ * Test interface using generics.
+ *
  * @author Sebastian Gröbler
- * @since 13.08.2012
+ * @since 20.08.2012
+ * @param <T>
  */
-public interface Identifiable<T> {
-	T getId();
+public interface Api <T extends User> {
+
+	T getUser();
+	void setUser(T user);
 }

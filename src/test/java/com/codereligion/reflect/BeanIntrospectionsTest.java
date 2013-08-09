@@ -27,13 +27,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import com.codereligion.bean.ApiUser;
-import com.codereligion.bean.ComplexClass;
-import com.codereligion.bean.MissingDefaultConstructor;
-import com.codereligion.bean.MissingSetterAndMissingGetter;
-import com.codereligion.bean.RestApi;
-import com.codereligion.bean.TypeMissmatchBetweenReadAndWriteMethods;
-import com.codereligion.bean.User;
+import com.codereligion.example.bean.ApiUser;
+import com.codereligion.example.bean.ComplexClass;
+import com.codereligion.example.bean.MissingDefaultConstructor;
+import com.codereligion.example.bean.MissingSetterAndMissingGetter;
+import com.codereligion.example.bean.RestApi;
+import com.codereligion.example.bean.TypeMissmatchBetweenReadAndWriteMethods;
+import com.codereligion.example.bean.User;
+
 import java.beans.PropertyDescriptor;
 import java.util.Set;
 import org.junit.Rule;
