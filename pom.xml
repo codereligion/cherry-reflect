@@ -21,6 +21,10 @@
 			<id>SierraGolf</id>
 			<name>Sebastian Gröbler</name>
 		</developer>
+		<developer>
+			<id>whiskeysierra</id>
+			<name>Willi Schönborn</name>
+		</developer>
 	</developers>
 
 	<scm>
