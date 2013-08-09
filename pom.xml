@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
 		<groupId>org.sonatype.oss</groupId>
@@ -30,8 +31,7 @@
 		<url>scm:git:ssh://git@github.com:codereligion/reflect.git</url>
 		<connection>scm:git:ssh://git@github.com:codereligion/reflect.git</connection>
 		<developerConnection>scm:git:git@github.com:codereligion/reflect.git</developerConnection>
-	  <tag>HEAD</tag>
-  </scm>
+	</scm>
 
 	<licenses>
 		<license>
@@ -57,6 +57,7 @@
 		<javadoc.plugin.version>2.9.1</javadoc.plugin.version>
 		<release.plugin.version>2.4.1</release.plugin.version>
 		<build.helper.plugin.version>1.8</build.helper.plugin.version>
+		<scm.plugin.version>1.8.1</scm.plugin.version>
 
 		<!-- dependency versions -->
 		<guava.version>14.0.1</guava.version>
@@ -259,6 +260,11 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
 				<version>${release.plugin.version}</version>
+				<configuration>
+					<preparationGoals>
+						clean verify -Pcommit.readme.changes
+					</preparationGoals>
+				</configuration>
 			</plugin>
 
 		</plugins>
@@ -310,6 +316,32 @@
 	</dependencies>
 
 	<profiles>
+		<profile>
+			<id>commit.readme.changes</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-scm-plugin</artifactId>
+						<version>${scm.plugin.version}</version>
+						<configuration>
+							<includes>README.md</includes>
+							<message>[maven-release-plugin] updating version in README.md</message>
+						</configuration>
+						<executions>
+							<execution>
+								<id>update.readme.changes</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>checkin</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+
 		<profile>
 			<id>generate.license.headers</id>
 			<build>
