@@ -26,7 +26,7 @@ import org.junit.rules.ExpectedException;
 /**
  * Tests {@link GenericTypeAwareBeanInfo}.
  * 
- * @author sgroebler
+ * @author Sebastian Gröbler
  * @since 08.08.2013
  */
 public class GenericTypeAwareBeanInfoTest {

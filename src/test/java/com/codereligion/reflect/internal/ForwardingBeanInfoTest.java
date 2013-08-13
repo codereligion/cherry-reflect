@@ -29,7 +29,7 @@ import org.junit.Test;
 /**
  * Tests {@link ForwardingBeanInfo}.
  * 
- * @author sgroebler
+ * @author Sebastian Gröbler
  * @since 08.08.2013
  */
 public class ForwardingBeanInfoTest {
