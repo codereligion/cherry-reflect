@@ -35,7 +35,7 @@ import java.util.Set;
  * @author Sebastian Gröbler
  * @since 11.08.2012
  */
-public final class BeanIntrospections {
+public class BeanIntrospections {
     
     private static final String TYPE_MUST_NOT_BE_NULL = "type must not be null.";
 
