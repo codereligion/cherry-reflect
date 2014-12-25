@@ -12,8 +12,8 @@ For more details have a look at the [wiki](https://github.com/codereligion/refle
 ```xml
 <dependency>
 	<groupId>com.codereligion</groupId>
-	<artifactId>codereligion-reflect</artifactId>
-	<version>0.1.0</version>
+	<artifactId>codereligion-cherry-reflect</artifactId>
+	<version>0.2.0-SNAPSHOT</version>
 </dependency>
 ```
 
