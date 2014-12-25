@@ -22,8 +22,8 @@ For more details have a look at the [wiki](https://github.com/codereligion/refle
 package com.codereligion.example;
 
 import com.codereligion.example.bean.User;
-import com.codereligion.reflect.BeanIntrospections;
-import com.codereligion.reflect.GenericTypeAwareBeanInfo;
+import com.codereligion.cherry.reflect.BeanIntrospections;
+import com.codereligion.cherry.reflect.GenericTypeAwareBeanInfo;
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;
 import java.beans.Introspector;

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codereligion.reflect;
+package com.codereligion.cherry.reflect;
 
 import static org.mockito.Mockito.mock;
 

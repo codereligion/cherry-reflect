@@ -9,12 +9,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.codereligion</groupId>
-	<artifactId>codereligion-reflect</artifactId>
+	<artifactId>codereligion-cherry-reflect</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
 
-	<name>Reflect</name>
+	<name>Cherry Reflect</name>
 	<description>Provides convenience methods for working with java beans introspection.</description>
-	<url>https://github.com/codereligion/reflect</url>
+	<url>https://github.com/codereligion/cherry-reflect</url>
 
 	<developers>
 		<developer>
@@ -28,9 +28,9 @@
 	</developers>
 
 	<scm>
-		<url>scm:git:ssh://git@github.com:codereligion/reflect.git</url>
-		<connection>scm:git:ssh://git@github.com:codereligion/reflect.git</connection>
-		<developerConnection>scm:git:git@github.com:codereligion/reflect.git</developerConnection>
+		<url>scm:git:ssh://git@github.com:codereligion/cherry-reflect.git</url>
+		<connection>scm:git:ssh://git@github.com:codereligion/cherry-reflect.git</connection>
+		<developerConnection>scm:git:git@github.com:codereligion/cherry-reflect.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
@@ -256,7 +256,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>${javadoc.plugin.version}</version>
 				<configuration>
-					<excludePackageNames>com.codereligion.reflect.internal</excludePackageNames>
+					<excludePackageNames>com.codereligion.cherry.reflect.internal</excludePackageNames>
 				</configuration>
 				<executions>
 					<execution>

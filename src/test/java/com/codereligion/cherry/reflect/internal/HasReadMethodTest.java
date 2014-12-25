@@ -13,25 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect.internal;
+package com.codereligion.cherry.reflect.internal;
 
-import com.google.common.base.Predicate;
-import java.beans.PropertyDescriptor;
-import javax.annotation.Nullable;
+import static org.junit.Assert.assertFalse;
+
+import org.junit.Test;
 
 /**
- * Applies true to {@link PropertyDescriptor}s when they provide a write method.
+ * Test the {@link HasReadMethod} predicate.
  * 
  * @author Sebastian Gröbler
- * @author Willi Schönborn
- * @since 12.06.2013
+ * @since 23.06.2013
  */
-public enum HasWriteMethod implements Predicate<PropertyDescriptor> {
+public class HasReadMethodTest {
 
-    INSTANCE;
-
-    @Override
-    public boolean apply(@Nullable PropertyDescriptor input) {
-        return input != null && input.getWriteMethod() != null;
+    @Test
+    public void mustNotApplyToNull() {
+        assertFalse(HasReadMethod.INSTANCE.apply(null));
     }
 }

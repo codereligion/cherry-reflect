@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.codereligion.reflect.internal;
+package com.codereligion.cherry.reflect.internal;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
