@@ -13,8 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.codereligion.cherry.reflect.internal;
+
+import com.google.common.base.Predicate;
+import java.beans.PropertyDescriptor;
+import javax.annotation.Nullable;
+
 /**
- * This package contains classes to do Java bean introspection.
+ * Applies true to {@link PropertyDescriptor}s when they provide a write method.
+ * 
+ * @author Sebastian Gröbler
+ * @author Willi Schönborn
+ * @since 12.06.2013
  */
-@javax.annotation.ParametersAreNonnullByDefault
-package com.codereligion.reflect;
+public enum HasWriteMethod implements Predicate<PropertyDescriptor> {
+
+    INSTANCE;
+
+    @Override
+    public boolean apply(@Nullable PropertyDescriptor input) {
+        return input != null && input.getWriteMethod() != null;
+    }
+}

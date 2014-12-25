@@ -13,12 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect;
+package com.codereligion.cherry.reflect;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
-import com.codereligion.reflect.internal.HasReadMethod;
-import com.codereligion.reflect.internal.HasWriteMethod;
+import com.codereligion.cherry.reflect.internal.HasReadMethod;
+import com.codereligion.cherry.reflect.internal.HasWriteMethod;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import java.beans.BeanInfo;

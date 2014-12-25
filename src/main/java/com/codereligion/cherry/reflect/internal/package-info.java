@@ -13,22 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect.internal;
-
-import static org.junit.Assert.assertFalse;
-
-import org.junit.Test;
-
 /**
- * Test the {@link HasReadMethod} predicate.
- * 
- * @author Sebastian Gröbler
- * @since 23.06.2013
+ * This package contains internal classes which are not part of the public API.
+ * Usage of any of these classes is explicitly not recommended. Any class in
+ * this package may be changed or removed without notice and without a deprecation
+ * period.
  */
-public class HasReadMethodTest {
-
-    @Test
-    public void mustNotApplyToNull() {
-        assertFalse(HasReadMethod.INSTANCE.apply(null));
-    }
-}
+@javax.annotation.ParametersAreNonnullByDefault
+package com.codereligion.cherry.reflect.internal;

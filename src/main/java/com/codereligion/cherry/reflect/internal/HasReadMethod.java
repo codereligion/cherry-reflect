@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codereligion.reflect.internal;
+package com.codereligion.cherry.reflect.internal;
 
 import com.google.common.base.Predicate;
 import java.beans.PropertyDescriptor;
