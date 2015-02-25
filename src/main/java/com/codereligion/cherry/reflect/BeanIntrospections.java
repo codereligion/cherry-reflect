@@ -15,8 +15,6 @@
  */
 package com.codereligion.cherry.reflect;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
 import com.codereligion.cherry.reflect.internal.HasReadMethod;
 import com.codereligion.cherry.reflect.internal.HasWriteMethod;
 import com.google.common.base.Predicate;
@@ -28,9 +26,10 @@ import java.beans.PropertyDescriptor;
 import java.lang.reflect.Constructor;
 import java.util.HashSet;
 import java.util.Set;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Provides convenience methods to ease working with Java bean instrospection.
+ * Provides convenience methods to ease working with Java bean introspection.
  * 
  * @author Sebastian Gröbler
  * @since 11.08.2012
