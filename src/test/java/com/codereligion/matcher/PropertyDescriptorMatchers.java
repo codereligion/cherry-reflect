@@ -15,22 +15,21 @@
  */
 package com.codereligion.matcher;
 
+import java.beans.PropertyDescriptor;
+import org.hamcrest.Matcher;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasProperty;
 
-import java.beans.PropertyDescriptor;
-import org.hamcrest.Matcher;
-
 /**
  * TODO
- * 
+ *
  * @author Sebastian Gröbler
  * @since 24.06.2013
  */
 public class PropertyDescriptorMatchers {
 
-	public static Matcher<Iterable<? super PropertyDescriptor>> containsProperty(final String propertyName) {
-		return hasItem(hasProperty("name", equalTo(propertyName)));
-	}
+    public static Matcher<Iterable<? super PropertyDescriptor>> containsProperty(final String propertyName) {
+        return hasItem(hasProperty("name", equalTo(propertyName)));
+    }
 }

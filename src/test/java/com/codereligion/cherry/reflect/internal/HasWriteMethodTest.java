@@ -15,13 +15,12 @@
  */
 package com.codereligion.cherry.reflect.internal;
 
-import static org.junit.Assert.assertFalse;
-
 import org.junit.Test;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Test the {@link HasWriteMethod} predicate.
- * 
+ *
  * @author Sebastian Gröbler
  * @since 23.06.2013
  */

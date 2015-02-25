@@ -16,6 +16,18 @@ package com.codereligion.cherry.reflect;
  * limitations under the License.
  */
 
+import com.codereligion.example.bean.ApiUser;
+import com.codereligion.example.bean.ComplexClass;
+import com.codereligion.example.bean.MissingDefaultConstructor;
+import com.codereligion.example.bean.MissingSetterAndMissingGetter;
+import com.codereligion.example.bean.RestApi;
+import com.codereligion.example.bean.TypeMissmatchBetweenReadAndWriteMethods;
+import com.codereligion.example.bean.User;
+import java.beans.PropertyDescriptor;
+import java.util.Set;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import static com.codereligion.matcher.IsNotInstantiatable.isNotInstantiatable;
 import static com.codereligion.matcher.PropertyDescriptorMatchers.containsProperty;
 import static org.hamcrest.Matchers.empty;
@@ -27,23 +39,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import com.codereligion.example.bean.ApiUser;
-import com.codereligion.example.bean.ComplexClass;
-import com.codereligion.example.bean.MissingDefaultConstructor;
-import com.codereligion.example.bean.MissingSetterAndMissingGetter;
-import com.codereligion.example.bean.RestApi;
-import com.codereligion.example.bean.TypeMissmatchBetweenReadAndWriteMethods;
-import com.codereligion.example.bean.User;
-
-import java.beans.PropertyDescriptor;
-import java.util.Set;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.ExpectedException;
-
 /**
  * Tests {@link BeanIntrospections}.
- * 
+ *
  * @author Sebastian Gröbler
  * @since 12.08.2012
  */
@@ -51,7 +49,7 @@ public class BeanIntrospectionsTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    
+
     @Test
     public void mustNotBeInstantiatable() {
         assertThat(BeanIntrospections.class, isNotInstantiatable());

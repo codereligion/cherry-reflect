@@ -24,7 +24,7 @@ import java.beans.PropertyDescriptor;
 
 /**
  * Forwards all calls to the delegate.
- * 
+ *
  * @author Sebastian Gröbler
  * @since 08.08.2013
  */

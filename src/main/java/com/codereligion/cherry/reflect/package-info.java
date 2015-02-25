@@ -16,5 +16,4 @@
 /**
  * This package contains classes to do Java bean introspection.
  */
-@javax.annotation.ParametersAreNonnullByDefault
-package com.codereligion.cherry.reflect;
+@javax.annotation.ParametersAreNonnullByDefault package com.codereligion.cherry.reflect;

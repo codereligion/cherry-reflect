@@ -16,19 +16,18 @@
 
 package com.codereligion.cherry.reflect.internal;
 
+import java.beans.BeanInfo;
+import org.junit.Before;
+import org.junit.Test;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import java.beans.BeanInfo;
-import org.junit.Before;
-import org.junit.Test;
-
 /**
  * Tests {@link ForwardingBeanInfo}.
- * 
+ *
  * @author Sebastian Gröbler
  * @since 08.08.2013
  */
@@ -37,19 +36,19 @@ public class ForwardingBeanInfoTest {
     private BeanInfo beanInfo;
 
     private ForwardingBeanInfo forwardingBeanInfo;
-    
+
     @Before
     public void beforeEachTest() {
         beanInfo = mock(BeanInfo.class);
         forwardingBeanInfo = new ForwardingBeanInfo() {
-            
+
             @Override
             protected BeanInfo delegate() {
                 return beanInfo;
             }
         };
     }
-    
+
     @Test
     public void mustDelegateCallsToGetAdditionalBeanInfo() {
         forwardingBeanInfo.getAdditionalBeanInfo();
@@ -92,19 +91,19 @@ public class ForwardingBeanInfoTest {
         forwardingBeanInfo.getMethodDescriptors();
         verify(beanInfo).getMethodDescriptors();
     }
-    
+
     @Test
     public void mustDelegateCallsToGetPropertyDescriptors() {
         forwardingBeanInfo.getPropertyDescriptors();
         verify(beanInfo).getPropertyDescriptors();
     }
-    
+
     @Test
     public void mustDelegateCallsToToString() {
         final String expected = "foo";
-        
+
         when(beanInfo.toString()).thenReturn(expected);
-        
+
         assertThat(forwardingBeanInfo.toString(), is(expected));
     }
 }

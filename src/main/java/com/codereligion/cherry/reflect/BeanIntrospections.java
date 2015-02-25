@@ -30,12 +30,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Provides convenience methods to ease working with Java bean introspection.
- * 
+ *
  * @author Sebastian Gröbler
  * @since 11.08.2012
  */
 public final class BeanIntrospections {
-    
+
     private static final String TYPE_MUST_NOT_BE_NULL = "type must not be null.";
 
     /**
@@ -47,10 +47,9 @@ public final class BeanIntrospections {
 
     /**
      * Determines whether the given {@code type} has a default constructor.
-     * 
+     *
      * @param type the {@link Class} to check
-     * @return true if the given {@code type} as a zero argument constructor,
-     *         false otherwise
+     * @return true if the given {@code type} as a zero argument constructor, false otherwise
      * @throws NullPointerException when the given parameter is {@code null}
      */
     public static boolean hasDefaultConstructor(final Class<?> type) {
@@ -69,14 +68,12 @@ public final class BeanIntrospections {
     }
 
     /**
-     * Retrieves a {@link Set} of writeable properties of the given {@code type}
-     * . This includes all properties which have a public setter.
-     * 
+     * Retrieves a {@link Set} of writeable properties of the given {@code type} . This includes all properties which have a public setter.
+     *
      * @param type the {@link Class} to get the writeable properties for
      * @return a {@link Set} of {@link PropertyDescriptor}s
-     * @throws NullPointerException when the given {@code type} is {@code null}
-     * @throws IllegalArgumentException when the given {@code type} can not be
-     *             introspected
+     * @throws NullPointerException     when the given {@code type} is {@code null}
+     * @throws IllegalArgumentException when the given {@code type} can not be introspected
      */
     public static Set<PropertyDescriptor> getWriteableProperties(final Class<?> type) {
         checkNotNull(type, TYPE_MUST_NOT_BE_NULL);
@@ -84,14 +81,12 @@ public final class BeanIntrospections {
     }
 
     /**
-     * Retrieves a {@link Set} of readable properties of the given {@code type}.
-     * This includes all properties which have a public getter.
-     * 
+     * Retrieves a {@link Set} of readable properties of the given {@code type}. This includes all properties which have a public getter.
+     *
      * @param type the {@link Class} to get the readable properties for
      * @return a {@link Set} of {@link PropertyDescriptor}s
-     * @throws NullPointerException when the given {@code type} is {@code null}
-     * @throws IllegalArgumentException when the given {@code type} can not be
-     *             introspected
+     * @throws NullPointerException     when the given {@code type} is {@code null}
+     * @throws IllegalArgumentException when the given {@code type} can not be introspected
      */
     public static Set<PropertyDescriptor> getReadableProperties(final Class<?> type) {
         checkNotNull(type, TYPE_MUST_NOT_BE_NULL);
@@ -99,15 +94,12 @@ public final class BeanIntrospections {
     }
 
     /**
-     * Retrieves a {@link Set} of writeable and readable properties of the given
-     * {@code type}. This includes all properties which have a public setter.
-     * 
-     * @param type the {@link Class} to get the writeable and readable
-     *            properties for
+     * Retrieves a {@link Set} of writeable and readable properties of the given {@code type}. This includes all properties which have a public setter.
+     *
+     * @param type the {@link Class} to get the writeable and readable properties for
      * @return a {@link Set} of {@link PropertyDescriptor}s
-     * @throws NullPointerException when the given {@code type} is {@code null}
-     * @throws IllegalArgumentException when the given {@code type} can not be
-     *             introspected
+     * @throws NullPointerException     when the given {@code type} is {@code null}
+     * @throws IllegalArgumentException when the given {@code type} can not be introspected
      */
     public static Set<PropertyDescriptor> getWriteableAndReadableProperties(final Class<?> type) {
         checkNotNull(type, TYPE_MUST_NOT_BE_NULL);
@@ -115,17 +107,14 @@ public final class BeanIntrospections {
     }
 
     /**
-     * Retrieves a {@link Set} properties for the given {@code type} which apply
-     * to the given {@code predicate}. This includes all properties which have a
+     * Retrieves a {@link Set} properties for the given {@code type} which apply to the given {@code predicate}. This includes all properties which have a
      * public getter and setter.
-     * 
-     * @param type the {@link Class} to get the readable properties for
-     * @param predicate the predicate to which each {@link PropertyDescriptor}
-     *            must apply
+     *
+     * @param type      the {@link Class} to get the readable properties for
+     * @param predicate the predicate to which each {@link PropertyDescriptor} must apply
      * @return a {@link Set} of {@link PropertyDescriptor}s
-     * @throws NullPointerException when the given {@code type} is {@code null}
-     * @throws IllegalArgumentException when the given {@code type} can not be
-     *             introspected
+     * @throws NullPointerException     when the given {@code type} is {@code null}
+     * @throws IllegalArgumentException when the given {@code type} can not be introspected
      */
     private static Set<PropertyDescriptor> getProperties(final Class<?> type, final Predicate<? super PropertyDescriptor> predicate) {
 

@@ -16,16 +16,15 @@
 
 package com.codereligion.cherry.reflect;
 
-import static org.mockito.Mockito.mock;
-
 import java.beans.BeanInfo;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import static org.mockito.Mockito.mock;
 
 /**
  * Tests {@link GenericTypeAwareBeanInfo}.
- * 
+ *
  * @author Sebastian Gröbler
  * @since 08.08.2013
  */
@@ -33,22 +32,22 @@ public class GenericTypeAwareBeanInfoTest {
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
-    
+
     @Test
     public void factoryMustThrowNPEForNullParameter() {
         expectedException.expect(NullPointerException.class);
         expectedException.expectMessage("beanInfo must not be null.");
-        
+
         GenericTypeAwareBeanInfo.of((BeanInfo) null);
     }
-    
+
     @Test
     public void factoryMustThrowIAEForGenericTypeAwareParameter() {
         expectedException.expect(IllegalArgumentException.class);
         expectedException.expectMessage("beanInfo is already of type GenericTypeAwareBeanInfo.");
-        
+
         final BeanInfo beanInfo = GenericTypeAwareBeanInfo.of(mock(BeanInfo.class));
-        
+
         GenericTypeAwareBeanInfo.of(beanInfo);
     }
 }
